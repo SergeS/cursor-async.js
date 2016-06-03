@@ -13,9 +13,32 @@ describe( 'CursorAsync', () => {
     expect( typeof CursorAsync ).toBe( 'function' );
   } );
 
+  it( 'Should have all public functions registered', () => {
+    var
+      functions = [],
+      i;
+    for ( i in CursorAsync.prototype ) {
+      functions.push( i );
+    }
+
+    expect( functions ).toEqual( functions );
+  } );
 
   beforeEach( () => {
     cursor = new CursorAsync();
+  } );
+
+  it( 'Should return only needed functions to public', () => {
+    var
+      functions = [],
+      i,
+      publicInt = cursor.getPublicInterface();
+
+    for ( i in publicInt ) {
+      functions.push( i );
+    }
+
+    expect( functions ).toEqual( functions );
   } );
 
   it( 'Should collect all recieved rows, if no function defined', ( done ) => {

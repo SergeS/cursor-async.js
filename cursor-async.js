@@ -17,6 +17,8 @@
 
   root.CursorAsync = CursorAsyncFactory( Promise );
 } )( this, function CursorAsyncFactory( promise ) {
+  var publicInterface = [ 'each', 'map', 'reduce', 'then' ];
+
   if ( !promise ) {
     console.error( 'Failed to init cursor-async - no promise mechanism found' );
     return;
@@ -118,8 +120,16 @@
       }
     }
 
+    function getPublicInterface() {
+      return publicInterface.reduce( function interfaceReducer( out, functionName ) {
+        out[ functionName ] = this[ functionName ];
+        return out;
+      }.bind( this ), {} );
+    }
+
     function each( callee, concurrent ) {
       isConcurrent = concurrent;
+      target = null;
       registerFunction( callee, false );
       return wrappedCursorPromise;
     }
@@ -128,7 +138,7 @@
       isConcurrent = concurrent;
       target = new CursorAsync( thisArg );
       registerFunction( callee, true );
-      return target;
+      return target.getPublicInterface();
     }
 
     function reduce( callee, concurrent ) {
@@ -139,7 +149,7 @@
         return callee( target.push, row );
       }, false );
 
-      return target;
+      return target.getPublicInterface();
     }
 
     function push( item ) {
@@ -198,7 +208,14 @@
     this.error = error;
     this.end = end;
     this.then = wrappedCursorPromise.then;
+    this.getPublicInterface = getPublicInterface.bind( this );
   }
+
+  publicInterface.forEach( function interfaceReducerPrototype( functionName ) {
+    CursorAsync.prototype[ functionName ] = function virtualFunction() {
+      this[ functionName ].apply( this, arguments );
+    };
+  } );
 
   return CursorAsync;
 } );
