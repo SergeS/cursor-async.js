@@ -22,7 +22,7 @@ gulp.task( 'test', () => {
   return gulp.src( [ `${__dirname}/spec/**/*.js` ] )
     .pipe( jasmine( {
       reporter: new reporters.JUnitXmlReporter( {
-        savePath: `${__dirname}/test-reports`
+        savePath: `${__dirname}/test-results`
       } )
     } ) )
 } );
