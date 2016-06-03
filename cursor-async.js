@@ -8,7 +8,7 @@
 
   if ( typeof root.angular !== 'undefined' ) {
     try {
-      root.angular.module( 'cursor-async', [] ).factory( [ '$q', CursorAsyncFactory ] );
+      root.angular.module( 'cursor-async', [] ).factory( 'CursorAsync', [ '$q', CursorAsyncFactory ] );
       return;
     } catch ( e ) {
       console.error( 'Failed to init cursor-async with angular', e );

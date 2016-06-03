@@ -18,8 +18,12 @@
   "files": [
     "cursor-async.js"
   ],
-  "license": "unlicensed",
+  "license": "MIT",
   "scripts": {
     "2npm": "publish"
+  },
+  "repository": {
+    "url": "git@github.com:SergeS/cursor-async.js.git",
+    "type": "git"
   }
 }
