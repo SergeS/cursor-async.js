@@ -1,0 +1,21 @@
+{
+  "name": "cursor-async.js",
+  "version": "1.0.0",
+  "description": "Library for asynchronous cursors with basic functionality",
+  "main": "cursor-async.js",
+  "author": {
+    "name": "sergej.brjuchanov",
+    "email": ""
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-eslint": "2.0.0",
+    "gulp-jasmine": "2.3.0",
+    "jasmine-reporters": "2.1.1",
+    "eslint-config-idiomatic": "2.0.0"
+  },
+  "files": [
+    "cursor-async.js"
+  ],
+  "license": "unlicensed"
+}
