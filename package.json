@@ -1,6 +1,6 @@
 {
   "name": "cursor-async.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for asynchronous cursors with basic functionality",
   "main": "cursor-async.js",
   "author": {
