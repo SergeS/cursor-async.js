@@ -173,6 +173,7 @@
       } );
 
       currentPromise = locPromise;
+      return currentPromise;
     }
 
     function error( err ) {
@@ -204,10 +205,11 @@
     this.each = each;
     this.map = map;
     this.reduce = reduce;
+    this.then = wrappedCursorPromise.then;
+
     this.push = push;
     this.error = error;
     this.end = end;
-    this.then = wrappedCursorPromise.then;
     this.getPublicInterface = getPublicInterface.bind( this );
   }
 
