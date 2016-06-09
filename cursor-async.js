@@ -48,7 +48,7 @@
       isConcurrent,
       wrappedCursorPromise = {
         then: function wrappedCursorPromiseThen( done, err, progress ) {
-          cursorPromise.then(
+          return cursorPromise.then(
             done ? done.bind( thisArg ) : null,
             err ? err.bind( thisArg ) : null,
             progress ? progress.bind( thisArg ) : null
@@ -151,7 +151,7 @@
 
       return target.getPublicInterface();
     }
-
+    
     function push( item ) {
       var locPromise;
 
